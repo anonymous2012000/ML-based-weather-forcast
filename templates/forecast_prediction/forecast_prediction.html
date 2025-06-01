@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Forecast
+{% endblock %}
+
+{% block content %}
+    <h1>Forecast</h1>
+    <p>
+        Upload a CSV file with the forecast values. The file should have values in the corresponding
+        order to these features:
+    </p>
+    <div class="box">
+        <ul class="d-flex justify-content-center gap-4 list-unstyled">
+            <li>Summary</li>
+            <li>Precip Type</li>
+            <li>Humidity</li>
+            <li>Wind Speed (km/h)</li>
+            <li>Wind Bearing (degrees)</li>
+            <li>Visibility (km)</li>
+            <li>Pressure (millibars)</li>
+        </ul>
+    </div>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.csrf_token() }}
+            <div class="field">
+                {{ form.upload(type="file", class="form-control", id="upload", placeholder="Upload forecast values") }}
+                {% for error in form.upload.errors %}
+                    {{ error }}
+                {% endfor %}
+                <label for="upload">Upload</label>
+            </div>
+            <div class="field">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
+        </form>
+    </div>
+    <!-- The model prediction will be visualised here -->
+    <h2 class="text-center">Result: {{ forecast_values }}</h2>
+{% endblock %}

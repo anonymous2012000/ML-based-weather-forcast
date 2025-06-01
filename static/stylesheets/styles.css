@@ -1,0 +1,115 @@
+
+
+
+#connectWallet, #connectWallet_login{
+    border-radius: 23px;
+    padding: 10px 17.5px;
+    color: rgb(243, 233, 233);
+    background-color: rgb(22, 24, 24);
+}
+
+#connectWallet_login{
+    border-radius: 23px; !important;
+}
+
+#connectWallet_reg{
+    border-radius: 23px;
+    padding: 10px 14px;
+    color: rgb(243, 233, 233);
+    background-color: rgb(14, 16, 16);
+
+    /*position: absolute;
+    margin-left: -10em*/
+}
+
+
+#admin_dash-btn{
+    border-radius: 25px;
+    padding: 5px 20px;
+    align-items: center;
+    margin: 1em 0.5px 2em 0.5px;
+}
+
+#space-between{
+    display: flex;
+    justify-content: center;
+}
+
+#connectWallet_reg:hover{
+    background-color: #0b5ed7;
+}
+
+#connectWallet_login:hover{
+      background-color: #0b5ed7; !important;
+}
+
+
+.connectWallet_reg{
+    border-radius: 23px;
+    padding: 10px 35px;
+    color: rgb(243, 233, 233);
+    background-color: rgb(14, 16, 16);
+    border-color: black; !important
+
+}
+
+.full_width_login_btn{
+     background-color: black; !important
+    border-radius: 23px; !important;
+}
+
+.full_width_login_btn:hover, .connectWallet_reg:hover{
+     background-color: black; !important
+}
+
+
+
+.login_form{
+    padding: 6em !important;
+}
+
+.full_width_connect{
+    margin-top: 1.3em;
+    margin-bottom: 1.4em;
+    border-radius: 23px; !important;
+}
+
+.full_width_login_btn{
+    width: 10.55vw;
+    margin-left: -0.55em; !important;
+    border-radius: 23px; !important;
+    padding: 8px 10px;
+
+}
+
+.height{
+    height: 100vh;
+}
+
+.input_form{
+    width: 30vw;
+}
+
+.reg-form{
+    padding: 3em;
+}
+
+.links{
+    margin-left:  20px;
+    margin-right:  20px;
+}
+.admin_dash{
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
+
+#space-between{
+    margin-top: 1.5em; !important;
+}

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Admin Dashboard
+{% endblock %}
+
+{% block content %}
+    <h1 class="admin-dash">Dashboard</h1>
+    <!-- Link to add client page -->
+    <div class="center"><a href="{{ url_for('admin.add_client') }}" class="btn btn-primary" id="admin_dash-btn">Add Client</a></div>
+    <div class="container">
+        {% if logs %}
+            {% for log in logs %}
+            <div class="card">
+                <div class="card-body">
+                    {{ log }}
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>No logs</p>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <!-- Page content goes here -->
+    <div class="d-flex justify-content-center align-items-center height">
+        <div class="container w-auto text-center p-4 rounded shadow login_form">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% if form %}
+                <form class="mb-3" method="POST">
+                    {{ form.csrf_token() }}
+                    <div class="form-floating mb-3">
+                        {{ form.email(type="email", class="form-control", id="email", placeholder="Email") }}
+                        {% for error in form.email.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{ form.password(type="password", class="form-control", id="password", placeholder="Password") }}
+                        {% for error in form.password.errors %}
+                            {{ error }}
+                        {% endfor %}
+                        <label for="password">Password</label>
+                    </div>
+                    {{ form.wallet_address(class="hidden", id="wallet_address") }}
+                    {% for error in form.wallet_address.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    {{ form.signature(type="hidden", id="signature") }}
+                    {% for error in form.signature.errors %}
+                        {{ error }}
+                    {% endfor %}
+
+                <div class="full_width_connect">
+                     <button id="connectWallet" type="button" class="btn btn-outline-dark me-2 full_width_connect_btn">Connect wallet</button>
+                </div>
+
+                <div class="full_width_login">
+                     {{ form.submit(type="submit", value="Login", class="btn btn-primary full_width_login_btn") }}
+                </div>
+
+
+                </form>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

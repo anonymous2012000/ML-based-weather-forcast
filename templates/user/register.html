@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    <!-- Page content goes here -->
+    <div class="d-flex justify-content-center align-items-center height">
+        <div class="container w-auto text-center p-4 rounded shadow">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            <form class="mb-3 reg-form" method="POST">
+                {{ form.csrf_token() }}
+                <div class="form-floating mb-3 input_form">
+                    {{ form.username(type="text", class="form-control", id="username", placeholder="Username") }}
+                    {% for error in form.username.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    <label for="username">Username</label>
+                </div>
+                <div class="form-floating mb-3 input_form">
+                    {{ form.email(type="email", class="form-control", id="email", placeholder="Email") }}
+                    {% for error in form.email.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3 input_form">
+                    {{ form.password(type="password", class="form-control", id="name", placeholder="Password") }}
+                    {% for error in form.password.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    <label for="password">Password</label>
+                </div>
+                <div class="form-floating mb-3 input_form">
+                    {{ form.confirm_password(type="password", class="form-control", id="confirm_pass", placeholder="Confirm Password") }}
+                    {% for error in form.confirm_password.errors %}
+                        {{ error }}
+                    {% endfor %}
+                    <label for="confirm_password mb-3 input_form">Confirm Password</label>
+                </div>
+
+                {{ form.wallet_address(type="hidden", id="wallet_address") }}
+                {% for error in form.wallet_address.errors %}
+                    {{ error }}
+                {% endfor %}
+                {{ form.signature(type="hidden", id="signature") }}
+                {% for error in form.signature.errors %}
+                    {{ error }}
+                {% endfor %}
+                <div id="space-between" class="">
+                    <button id="connectWallet" type="button" class="btn btn-outline-dark me-2">Connect wallet</button>
+                    {{ form.submit(type="submit", value="Register", class="btn btn-primary connectWallet_reg") }}
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

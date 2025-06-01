@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Client{% endblock %}
+
+{% block content %}
+    <!-- Page content goes here -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% if form %}
+        <form method="POST">
+            {{ form.csrf_token() }}
+            {{ form.username(class="input", placeholder="Username") }}
+            {% for error in form.username.errors %}
+                {{ error }}
+            {% endfor %}
+            {{ form.submit(class="button") }}
+        </form>
+    {% endif %}
+{% endblock %}
